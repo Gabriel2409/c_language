@@ -39,7 +39,7 @@ main()
             if (state == IN)
             {
                 state = OUT;
-                ++ndigit[len];
+                ++ndigit[len - 1];
                 if (len > maxval)
                 {
                     maxval = len;
@@ -51,7 +51,7 @@ main()
 
     if (state == IN)
     {
-        ++ndigit[len];
+        ++ndigit[len - 1];
         if (len > maxval)
         {
             maxval = len;
@@ -62,21 +62,32 @@ main()
     /* Horizontal version histogram */
     for (i = 0; i < 15; i++)
     {
+        printf("%2d ", i + 1);
         for (int ii = 0; ii < ndigit[i]; ++ii)
             printf("#");
         printf("\n");
     }
-        printf("------------------------------\n");
+    printf("------------------------------\n");
 
     /* Vertical version histogram */
-    for (int j = 0; j < maxval; j++){
-        for (i = 0; i < 15; i++){
-            if (ndigit[i] >= maxval -j){
-                printf("#");
-            } else{
-                printf(" ");
+    for (int j = 0; j < maxval; j++)
+    {
+        for (i = 0; i < 15; i++)
+        {
+            if (ndigit[i] >= maxval - j)
+            {
+                printf(" # ");
+            }
+            else
+            {
+                printf("   ");
             }
         }
         printf("\n");
+    }
+
+    for (i = 0; i < 15; i++)
+    {
+        printf("%2d ", i + 1);
     }
 }
