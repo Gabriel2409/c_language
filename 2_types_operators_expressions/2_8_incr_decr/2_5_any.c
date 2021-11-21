@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int any(const char s1[], const char s2[]);
 
@@ -6,9 +7,16 @@ int main(void)
 {
 #define MAXSIZE 100
     char s1[MAXSIZE] = "Je ne pense pas";
-    char s2[MAXSIZE] = "zc";
+    char s2[MAXSIZE] = "zpe";
 
     printf("%d\n", any(s1, s2));
+
+    char *p = strpbrk(s1, s2);
+
+    if (p != 0)
+        printf("First matching character: %c\n", *p);
+    else
+        printf("Character not found\n");
 }
 
 int any(const char s1[], const char s2[])
